@@ -3,9 +3,9 @@
   "version": "<%= version %>",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "status": "ps aux | grep node",
-    "run_prod": "nohup node /var/www/stats4.biz/dp/app.js --port 3333 > /dev/null 2>&1 &"
+    "status": "forever list",
+    "stop": "forever stop ./app.js",
+    "start": "npm i && bower i --allow-root && grunt build && forever start ./app.js --port 3334"
   },
   "dependencies": {
     "async": "^0.9.0",
