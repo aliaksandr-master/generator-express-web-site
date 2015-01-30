@@ -1,0 +1,27 @@
+extends ../index
+
+append css
+	link(rel='stylesheet', href='/static/styles/layout/default/index.css')
+
+block content
+	.b-layout__header
+		block header
+			.container
+				+header-menu(headerLinksBar)
+
+	.b-layout__body-wr.clearfix
+		.container.b-layout__body
+			block body
+				.row.clearfix(style="padding: 15px 0 0;")
+					.col-sm-8.b-layout__main
+						block main
+							+breadcrumb(breadcrumbLinksBar)
+							// p Content
+
+					.col-sm-4.b-layout__sidebar
+						block sidebar
+							// sidebar
+
+	.b-layout__footer
+		block footer
+			p copy

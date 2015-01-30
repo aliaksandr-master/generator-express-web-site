@@ -1,0 +1,7 @@
+extends layout/default/index
+
+block body
+	h1!= error.message
+	h2= error.status
+	// if error.stack
+		pre= error.stack

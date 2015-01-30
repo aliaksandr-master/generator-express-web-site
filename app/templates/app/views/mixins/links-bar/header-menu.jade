@@ -1,0 +1,5 @@
+mixin header-menu (linksBar)
+	nav.b-layout-header__nav
+		each link in linksBar
+			a.b-layout-header__nav-item(href=link.href, class=link.isActive ? '-active' : null)
+				= link.label
