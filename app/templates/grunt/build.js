@@ -5,8 +5,8 @@ module.exports = function () {
 	this
 
 		.include([
-			'./app',
-			'./static'
+			'app',
+			'static'
 		])
 
 	;

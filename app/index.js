@@ -1,121 +1,97 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var path = require('path');
 var yosay = require('yosay');
 var _ = require('lodash');
 
 module.exports = yeoman.generators.Base.extend({
-  initializing: function () {
-    this.pkg = require('../package.json');
-  },
+	initializing: function () {
+		this.pkg = require('../package.json');
+	},
 
-  prompting: function () {
-    var done = this.async();
+	prompting: function () {
+		var done = this.async();
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the ' + chalk.red('ExpressWebSite') + ' generator!'
-    ));
+		this.log(yosay(
+			'Welcome to the ' + chalk.red('ExpressWebSite') + ' generator!'
+		));
 
-    var prompts = [
-      {
-        type: "input",
-        name: 'appname',
-        message: 'Enter AppName'
-      },
-      {
-        type: 'input',
-        name: 'version',
-        message: 'Version',
-        default: '1.0.0'
-      }
-    ];
+		var prompts = [
+			{
+				type: "input",
+				name: 'appname',
+				message: 'Enter AppName',
+				default: path.basename(this.destinationPath())
+			},
+			{
+				type: 'input',
+				name: 'version',
+				message: 'Version',
+				default: '1.0.0'
+			}
+		];
 
-    this.prompt(prompts, function (props) {
-      _.extend(this.options, props);
-      done();
-    }.bind(this));
-  },
+		this.prompt(prompts, function (props) {
+			_.extend(this.options, props);
+			done();
+		}.bind(this));
+	},
 
-  writing: {
-    app: function () {
-      this.expandFiles('app/**/*', { cwd: this.templatePath() }).forEach(function (file) {
-        this.fs.copy(
-          this.templatePath(file),
-          this.destinationPath(file)
-        );
-      }, this);
-      this.expandFiles('config/**/*', { cwd: this.templatePath() }).forEach(function (file) {
-        this.fs.copy(
-          this.templatePath(file),
-          this.destinationPath(file)
-        );
-      }, this);
-      this.expandFiles('static/**/*', { cwd: this.templatePath() }).forEach(function (file) {
-        this.fs.copy(
-          this.templatePath(file),
-          this.destinationPath(file)
-        );
-      }, this);
-      this.expandFiles('tmp/**/*', { cwd: this.templatePath() }).forEach(function (file) {
-        this.fs.copy(
-          this.templatePath(file),
-          this.destinationPath(file)
-        );
-      }, this);
-      this.fs.copy(
-        this.templatePath('app.js'),
-        this.destinationPath('app.js')
-      );
-      this.fs.copy(
-        this.templatePath('Gruntfile.js'),
-        this.destinationPath('Gruntfile.js')
-      );
-      this.fs.copy(
-        this.templatePath('_bowerrc'),
-        this.destinationPath('.bowerrc')
-      );
-      this.fs.copy(
-        this.templatePath('_csscomb.json'),
-        this.destinationPath('.csscomb.json')
-      );
-      this.fs.copy(
-        this.templatePath('_gitignore'),
-        this.destinationPath('.gitignore')
-      );
-      this.fs.copy(
-        this.templatePath('_editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('_jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
+	_copyDir: function (dirname) {
+		this.expandFiles(dirname + '/**/*', { cwd: this.templatePath() }).forEach(function (file) {
+			this.fs.copy(
+				this.templatePath(file),
+				this.destinationPath(file)
+			);
+		}, this);
+	},
 
-      this.fs.copyTpl(
-        this.templatePath('package.json'),
-        this.destinationPath('package.json'),
-        this.options
-      );
-      this.fs.copyTpl(
-        this.templatePath('bower.json'),
-        this.destinationPath('bower.json'),
-        this.options
-      );
-      this.fs.copyTpl(
-        this.templatePath('README.md'),
-        this.destinationPath('README.md'),
-        this.options
-      );
-    },
-    assetsDirs: function () {
-      this.mkdir('tmp/upload');
-    }
-  },
+	_copyFile: function (file) {
+		this.fs.copy(
+			this.templatePath(file),
+			this.destinationPath(file)
+		);
+	},
 
-  install: function () {
-    this.installDependencies({
-      skipInstall: this.options['skip-install']
-    });
-  }
+	_copyDotFile: function (file) {
+		this.fs.copy(
+			this.templatePath('_' + file),
+			this.destinationPath('.' + file)
+		);
+	},
+
+	_copyTpl: function (file) {
+		this.fs.copyTpl(
+			this.templatePath(file),
+			this.destinationPath(file),
+			this.options
+		);
+	},
+
+	writing: {
+		app: function () {
+			this._copyDir('app');
+			this._copyDir('grunt');
+			this._copyDir('static-src');
+			this._copyDotFile('bowerrc');
+			this._copyDotFile('csscomb.json');
+			this._copyDotFile('editorconfig');
+			this._copyDotFile('gitignore');
+			this._copyDotFile('jshintrc');
+			this._copyTpl('bower.json');
+			this._copyFile('Gruntfile.js');
+			this._copyTpl('package.json');
+			this._copyTpl('README.md');
+		},
+		assetsDirs: function () {
+			this.mkdir('tmp/upload');
+		}
+	},
+
+	install: function () {
+		this.installDependencies({
+			skipInstall: this.options['skip-install']
+		});
+	}
 });
