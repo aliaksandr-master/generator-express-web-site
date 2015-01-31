@@ -1,9 +1,10 @@
 'use strict';
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var path = require('path');
-var yosay = require('yosay');
+
 var _ = require('lodash');
+var path = require('path');
+var chalk = require('chalk');
+var yosay = require('yosay');
+var yeoman = require('yeoman-generator');
 
 module.exports = yeoman.generators.Base.extend({
 	initializing: function () {
@@ -21,14 +22,20 @@ module.exports = yeoman.generators.Base.extend({
 			{
 				type: "input",
 				name: 'appname',
-				message: 'Enter AppName',
-				default: path.basename(this.destinationPath())
+				message: 'AppName',
+				default: path.basename(this.destinationPath()),
+				validate: function (value) {
+					return /^[_a-zA-Z][a-zA-Z0-9_-]*$/.test(value);
+				}
 			},
 			{
 				type: 'input',
 				name: 'version',
 				message: 'Version',
-				default: '1.0.0'
+				default: '1.0.0',
+				validate: function (value) {
+					return /^\d+\.\d+\.\d+(-.+)?$/.test(value);
+				}
 			}
 		];
 
@@ -91,7 +98,12 @@ module.exports = yeoman.generators.Base.extend({
 
 	install: function () {
 		this.installDependencies({
-			skipInstall: this.options['skip-install']
+			bower: true,
+			npm: true,
+			skipInstall: this.options['skip-install'],
+			callback: function () {
+				console.log('Everything is ready!');
+			}
 		});
 	}
 });

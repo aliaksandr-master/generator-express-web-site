@@ -8,16 +8,16 @@ module.exports = require('grunto')(function (grunt) {
 	});
 
 	this.context({
-		CWD: CWD,
-		STATIC_SRC: 'static-src',
+		CWD:         CWD,
+		STATIC_SRC:  'static-src',
 		STATIC_DEST: 'static',
-		JS_SRC: 'static-src/js',
-		JS_DEST: 'static/js',
-		IMAGES_SRC: 'static-src/images',
+		JS_SRC:      'static-src/js',
+		JS_DEST:     'static/js',
+		IMAGES_SRC:  'static-src/images',
 		IMAGES_DEST: 'static/images',
-		STYLES_SRC: 'static-src/styles',
+		STYLES_SRC:  'static-src/styles',
 		STYLES_DEST: 'static/styles',
-		APP: 'app'
+		APP:         'app'
 	});
 
 	this.scan([{

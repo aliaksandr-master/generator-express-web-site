@@ -4,25 +4,28 @@
     "private": true,
     "main": "app/index.js",
     "scripts": {
-        "status": "forever list",
-        "stop": "forever stop ./app/index.js",
-        "start": "npm i && bower i --allow-root && grunt build && forever start ./app/index.js --port 3334"
+        "status": "node_modules/.bin/forever list",
+        "stop": "node_modules/.bin/forever stop ./app/index.js",
+        "update": "npm install && bower install --allow-root && grunt build",
+        "start": "npm stop && grunt build && node_modules/.bin/forever start ./app/index.js --port 3334"
     },
     "dependencies": {
-        "async": "^0.9.0",
+        "async": "~0.9.0",
         "body-parser": "~1.10.0",
         "compression": "~1.2.2",
         "cookie-parser": "~1.3.3",
         "express": "~4.10.6",
         "glob": "~4.3.1",
         "jade": "~1.8.1",
-        "lodash": "^2.4.1",
+        "lodash": "~2.4.1",
         "method-override": "~2.3.0",
-        "moment": "^2.9.0",
+        "moment": "~2.9.0",
         "morgan": "~1.5.0",
-        "multer": "^0.1.6",
-        "optimist": "^0.6.1",
-        "serve-favicon": "~2.1.7"
+        "multer": "~0.1.6",
+        "optimist": "~0.6.1",
+        "constantin": "~1.0.2",
+        "serve-favicon": "~2.1.7",
+		"forever": "~0.13.0"
     },
     "devDependencies": {
         "grunt": "^0.4.5",

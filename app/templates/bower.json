@@ -9,6 +9,8 @@
   ],
   "dependencies": {
     "bootstrap-less": "^3.2.0",
+    "h_less": "git://github.com/aliaksandr-pasynkau/H_Less.git",
+    "less-elements": "git://github.com/dmitryf/elements.git",
     "jquery": "^1.9.0"
   }
 }

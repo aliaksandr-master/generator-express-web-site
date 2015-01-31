@@ -1,8 +1,8 @@
 mixin breadcrumb (linksBar)
 	ol.breadcrumb
 		each link in linksBar
-			li(class=link.isActive ? 'active' : '')
-				if !link.isActive
+			if link.isActive
+				li.active= link.label
+			else
+				li
 					a(href=link.href)= link.label
-				else
-					= link.label

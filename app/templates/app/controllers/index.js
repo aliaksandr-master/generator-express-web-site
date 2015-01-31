@@ -1,12 +1,13 @@
 "use strict";
 
-module.exports = function (router) {
+module.exports = function (app, express, config) {
+	var router = express.Router();
 
 	router.get('/', function (req, res, next) {
-		res.renderLayout('pages/index', {
+		res.render('pages/index', {
 			title: 'Index Page'
 		});
 	});
 
-	return '/';
+	app.use('/', router);
 };

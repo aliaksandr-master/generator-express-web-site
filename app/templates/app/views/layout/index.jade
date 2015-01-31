@@ -1,1 +1,28 @@
-extends ./empty
+doctype html
+include ../mixins/all
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width')
+		title= title
+		block css
+			link(rel='stylesheet', href='/static/styles/vendor.css')
+			link(rel='stylesheet', href='/static/styles/pages/index.css')
+	body
+		block content
+		block popup
+		block js
+			script(src='/static/components/jquery/dist/jquery.min.js')
+			script(src='/static/components/bootstrap-less/js/transition.js')
+			script(src='/static/components/bootstrap-less/js/alert.js')
+			script(src='/static/components/bootstrap-less/js/button.js')
+			script(src='/static/components/bootstrap-less/js/carousel.js')
+			script(src='/static/components/bootstrap-less/js/collapse.js')
+			script(src='/static/components/bootstrap-less/js/dropdown.js')
+			script(src='/static/components/bootstrap-less/js/modal.js')
+			script(src='/static/components/bootstrap-less/js/tooltip.js')
+			script(src='/static/components/bootstrap-less/js/popover.js')
+			script(src='/static/components/bootstrap-less/js/scrollspy.js')
+			script(src='/static/components/bootstrap-less/js/tab.js')
+			script(src='/static/components/bootstrap-less/js/affix.js')
+			script(src='/static/js/index.js')
