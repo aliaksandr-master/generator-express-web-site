@@ -1,91 +1,53 @@
 'use strict';
 
 module.exports = require('grunto')(function (grunt) {
-	grunt.registerTask('build', [
-		'less:dist',
-		'copy:scripts',
-		'uglify:scripts'
-	]);
+	var CWD = __dirname;
 
-	grunt.registerTask('default', [
-		'build',
-		'develop',
-		'watch'
-	]);
+	grunt.file.expand([ 'grunt/tasks/**/*.js' ]).forEach(function (f) {
+		require(CWD + '/' + f)(grunt);
+	});
+
+	this.context({
+		CWD: CWD,
+		STATIC_SRC: 'static-src',
+		STATIC_DEST: 'static',
+		JS_SRC: 'static-src/js',
+		JS_DEST: 'static/js',
+		IMAGES_SRC: 'static-src/images',
+		IMAGES_DEST: 'static/images',
+		STYLES_SRC: 'static-src/styles',
+		STYLES_DEST: 'static/styles',
+		APP: 'app'
+	});
+
+	this.scan([{
+		cwd: 'grunt/',
+		src: [
+			'**/*.js',
+			'!tasks/**/*.js',
+			'!**/_*.js',
+			'!**/_*/**/*.js'
+		]
+	}]);
 
 	return {
-		develop: {
-			server: {
-				file: 'app.js'
-			}
-		},
-		copy: {
-			scripts: {
-				files: [{
-					expand: true,
-					cwd: 'static/js-src',
-					src: '**/*.{js,json}',
-					dest: 'static/js'
-				}]
-			}
-		},
-		less: {
-			dist: {
-				files : [{
-					expand : true,
-					cwd: 'static/styles-src',
-					dest: 'static/styles',
-					src: [
-						'**/*.less',
-						'!base/**/*.less'
-					],
-					ext: '.css'
-				}]
-			}
-		},
-		uglify: {
+		jshint: {
 			options: {
-				compress: {
-					drop_console: true
-				}
-			},
-			scripts: {
-				files: [{
-					expand: true,
-					cwd: 'static/js',
-					src: '**/*.js',
-					dest: 'static/js'
-				}]
+				jshintrc: true
+			}
+		},
+		autoprefixer: {
+			options: {
+				browsers: ['last 3 version', 'ie 9', 'android 4'],
+				diff: false,
+				map: false
 			}
 		},
 		watch: {
 			options: {
-				nospawn    : true,
-				livereload : true
-			},
-			js: {
-				files: [
-					'app.js',
-					'app/**/*.js',
-					'config/*.js'
-				],
-				tasks: [
-					'develop'
-				]
-			},
-			css: {
-				files: [
-					'static/styles-src/**/*.less'
-				],
-				tasks: [
-					'less'
-				]
-			},
-			views: {
-				files: [
-					'app/views/*.jade',
-					'app/views/**/*.jade'
-				]
+				livereload: true,
+				nospawn: true,
+				interrupt: true
 			}
 		}
 	};

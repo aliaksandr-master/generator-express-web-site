@@ -76,6 +76,10 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.bowerrc')
       );
       this.fs.copy(
+        this.templatePath('_csscomb.json'),
+        this.destinationPath('.csscomb.json')
+      );
+      this.fs.copy(
         this.templatePath('_gitignore'),
         this.destinationPath('.gitignore')
       );

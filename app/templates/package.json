@@ -2,10 +2,11 @@
   "name": "<%= _.slugify(appname) %>",
   "version": "<%= version %>",
   "private": true,
+  "main": "app/index.js",
   "scripts": {
     "status": "forever list",
-    "stop": "forever stop ./app.js",
-    "start": "npm i && bower i --allow-root && grunt build && forever start ./app.js --port 3334"
+    "stop": "forever stop ./app/index.js",
+    "start": "npm i && bower i --allow-root && grunt build && forever start ./app/index.js --port 3334"
   },
   "dependencies": {
     "async": "^0.9.0",

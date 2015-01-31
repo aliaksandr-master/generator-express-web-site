@@ -19,3 +19,4 @@ static/components
 /static/styles
 /static/js
 /tmp
+/.dev
