@@ -4,10 +4,10 @@
     "private": true,
     "main": "app/index.js",
     "scripts": {
-        "status": "node_modules/.bin/forever list",
-        "stop": "node_modules/.bin/forever stop ./app/index.js",
-        "update": "npm install && bower install --allow-root && grunt build",
-        "start": "npm stop && grunt build && node_modules/.bin/forever start ./app/index.js --port 3334"
+        "app:status": "node_modules/.bin/forever list",
+        "app:stop": "node_modules/.bin/forever stop ./app/index.js",
+        "app:update": "npm install && bower install --allow-root && grunt build",
+        "app:start": "grunt build && node_modules/.bin/forever start ./app/index.js --port 3334"
     },
     "dependencies": {
         "async": "~0.9.0",
