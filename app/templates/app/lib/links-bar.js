@@ -3,9 +3,11 @@
 var _ = require('lodash');
 
 var patchLink = function (url, link, session) {
+	var urlWithoutSearch = url.replace(/\?.*$/, '');
+
 	if (link.href === '/') {
 		if (!session.hasActive) {
-			if (url === '/' || url === '') {
+			if (url === '/' || url === '' || urlWithoutSearch === '/' || urlWithoutSearch === '') {
 				link.isActive = true;
 				session.hasActive = true;
 			}
