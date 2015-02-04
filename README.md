@@ -10,6 +10,7 @@
 - lodash
 - jade
 - grunt + grunto
+- random baseColor for header in base template
 
 ### Build
 ```shell

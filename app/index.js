@@ -41,6 +41,12 @@ module.exports = yeoman.generators.Base.extend({
 
 		this.prompt(prompts, function (props) {
 			_.extend(this.options, props);
+
+			var colors = ['427100', '6F0500', '4A5656', '021C4A', '428bca', '381C00', '379000', '376397', '5D59B9', 'CA945C'];
+			var colorIndex = Math.floor(Math.random()*colors.length);
+			console.log(colorIndex);
+			this.options.baseColor = colors[colorIndex];
+
 			done();
 		}.bind(this));
 	},
@@ -81,6 +87,7 @@ module.exports = yeoman.generators.Base.extend({
 			this._copyDir('app');
 			this._copyDir('grunt');
 			this._copyDir('static-src');
+			this._copyTpl('static-src/styles/layout/default/index.less');
 			this._copyDotFile('bowerrc');
 			this._copyDotFile('csscomb.json');
 			this._copyDotFile('editorconfig');
