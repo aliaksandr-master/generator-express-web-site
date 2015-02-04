@@ -23,7 +23,7 @@ $ grunt build
 
 #### Development
 ```shell
-$ grunt
+$ grunt default watch
 ```
 #### Production
 need `forever` npm package

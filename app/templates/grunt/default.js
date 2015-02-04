@@ -12,9 +12,5 @@ module.exports = function (grunt, options) {
 		.develop({
 			file: 'app/index.js'
 		})
-		.include([
-			'app/watcher',
-			'static/watcher'
-		])
 	;
 };
