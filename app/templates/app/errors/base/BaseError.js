@@ -1,7 +1,7 @@
 "use strict";
 
 var _ = require('lodash');
-var extend = require('../../extend');
+var extend = require('../../lib/extend');
 
 var BaseError = function () {
 	Error.apply(this, arguments);
