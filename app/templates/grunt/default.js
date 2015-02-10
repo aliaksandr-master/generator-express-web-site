@@ -10,7 +10,9 @@ module.exports = function (grunt, options) {
 			'build'
 		])
 		.develop({
-			file: 'app/index.js'
+			file: 'app/index.js',
+			nodeArgs: ['--debug'],
+			env: { NODE_ENV: 'development'}
 		})
 	;
 };

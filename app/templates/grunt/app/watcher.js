@@ -9,7 +9,8 @@ module.exports = function (grunt, options) {
 				options.APP + '/**/*.js'
 			],
 			tasks: [
-				'app'
+				'app',
+				'develop'
 			]
 		})
 
@@ -17,6 +18,9 @@ module.exports = function (grunt, options) {
 			files: [
 				options.APP + '/**/*',
 				'!' + options.APP + '/**/*.js'
+			],
+			tasks: [
+				'develop'
 			]
 		})
 

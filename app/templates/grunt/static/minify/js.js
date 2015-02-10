@@ -9,7 +9,7 @@ module.exports = function (grunt, options) {
 				sourceMap: false,
 				compress: {
 					//dead_code: true,
-					drop_console: true
+					//drop_console: true
 				}
 			},
 			files: [{
