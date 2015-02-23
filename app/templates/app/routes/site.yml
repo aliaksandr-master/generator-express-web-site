@@ -1,0 +1,11 @@
+---
+
+home:
+    page: GET /
+about:
+    page: GET /about-us
+support:
+    page: GET /support
+    action: POST /support
+terms:
+    page: GET /terms
