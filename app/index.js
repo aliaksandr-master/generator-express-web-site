@@ -99,7 +99,8 @@ module.exports = yeoman.generators.Base.extend({
 			this._copyTpl('README.md');
 		},
 		assetsDirs: function () {
-			this.mkdir('tmp/upload');
+			this.mkdir('.tmp/upload');
+			this.mkdir('.var');
 		}
 	},
 
