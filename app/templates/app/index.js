@@ -103,15 +103,16 @@ app.use(function (err, req, res, next) {
 
 
 // init server
-var server = app.listen(config.port, function (err) {
-	if (err) {
-		console.error(err);
-		err.stack && console.error(err.stack);
-		return;
-	}
+if (!module.parent) {
+	var server = app.listen(config.port, function (err) {
+		if (err) {
+			console.error(err);
+			err.stack && console.error(err.stack);
+			return;
+		}
 
-	var addr = server.address();
-	console.log('Server started at localhost:' + addr.port + '(' + addr.address + ')');
-});
+		console.log('Server started at localhost:' + server.address().port + '(' + server.address().address + ')');
+	});
+}
 
 module.exports = app;
