@@ -1,0 +1,13 @@
+doctype html
+head
+	meta(charset='UTF-8')
+	meta(name='viewport', content='width=device-width')
+body(style="background: #f1f1f1;padding: 30px;")
+	p
+		b User Agent:&nbsp;
+		= REQUEST_HEADERS['user-agent']
+	p
+		b From:&nbsp;
+		a(href="mailto:" + REQUEST_BODY.email)= REQUEST_BODY.email
+	b Feedback:
+	pre= REQUEST_BODY.feedback
