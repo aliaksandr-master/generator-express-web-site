@@ -16,7 +16,7 @@ config.uri.public = '/public';
 config.uri.static = '/static';
 
 config.path = {};
-config.path.root        = path.normalize(__dirname + '/..');
+config.path.root        = path.normalize(__dirname + '/../..');
 config.path.public      = config.path.root + config.uri.public;
 config.path.static      = config.path.root + config.uri.static;
 config.path.tmp         = config.path.root + '/tmp';
