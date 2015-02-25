@@ -1,5 +1,8 @@
 [![npm](http://img.shields.io/npm/v/generator-express-web-site.svg?style=flat-square)](https://www.npmjs.com/package/generator-express-web-site)
 [![npm](http://img.shields.io/npm/l/generator-express-web-site.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![Dependency Status](https://david-dm.org/aliaksandr-pasynkau/generator-express-web-site.svg?style=flat-square)](https://david-dm.org/aliaksandr-pasynkau/generator-express-web-site)
+[![devDependency Status](https://david-dm.org/aliaksandr-pasynkau/generator-express-web-site/dev-status.svg?style=flat-square)](https://david-dm.org/aliaksandr-pasynkau/generator-express-web-site#info=devDependencies)
+[![Build Status](https://travis-ci.org/aliaksandr-pasynkau/generator-express-web-site.svg?branch=master&style=flat-square)](https://travis-ci.org/aliaksandr-pasynkau/generator-express-web-site)
 
 # generator-express-web-site
 > [Yeoman](http://yeoman.io) generator
