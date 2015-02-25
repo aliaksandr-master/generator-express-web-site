@@ -1,8 +1,12 @@
 language: node_js
 node_js:
-  - node
-  - iojs
-  - 0.11
+  - "node"
+  - "iojs"
+  - "0.11"
+notifications:
+  email:
+    on_success: never
+    on_failure: always
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-express-web-site' ]; then cd .. && eval "mv $currentfolder generator-express-web-site" && cd generator-express-web-site; fi
