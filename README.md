@@ -32,22 +32,22 @@ $ grunt build
 $ grunt default watch
 ```
 #### Production
-need `forever` npm package
-```shell
-$ npm i -g forever
-```
 run
 ```shell
-$ npm start
+$ npm run app:start
 ```
 stop
 ```shell
-$ npm stop
+$ npm run app:stop
 ```
 status
 ```shell
-$ npm run status
+$ npm run app:status
 ```
+
+### Questionnaire:
+1. AppName (current dir basename)
+2. Version (1.0.0)
 
 ## Getting Started
 
@@ -78,7 +78,7 @@ npm install -g generator-express-web-site
 Finally, initiate the generator:
 
 ```bash
-yo node-lib
+yo express-web-site
 ```
 
 ### Getting To Know Yeoman
