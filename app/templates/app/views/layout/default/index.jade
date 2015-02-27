@@ -25,4 +25,4 @@ block content
 
 	.b-layout__footer
 		block footer
-			p copy
+			p!= '&copy;' + moment().format('YYYY') + '&nbsp;all rights reserved'
