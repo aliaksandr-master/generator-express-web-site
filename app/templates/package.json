@@ -1,5 +1,5 @@
 {
-    "name": "<%= _.slugify(appname) %>",
+    "name": "<%= _.kebabCase(appname) %>",
     "version": "<%= version %>",
     "private": true,
     "main": "app/index.js",
