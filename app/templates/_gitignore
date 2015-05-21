@@ -1,22 +1,27 @@
 # ide and os files
-/.idea/
-**/*.DS_Store
-**/*.kate-swp
-**/*.desktop
-**/*.thumb
-**/*.sublime*
-**/.~*
-**/~*
-**/*~
+.idea
+*.DS_Store
+*.kate-swp
+*.desktop
+*.thumb
+*.sublime*
+.~*
+~*
+*~
 
+# npm
+npm-debug.log
+node_modules
 
-# package managers
-/npm-debug.log
-static/components
-/lib-cov
-/node_modules
+# bower
 /static/components
-/static/styles
-/static/js
+
+# tmp files
+.tmp
+/lib-cov
 /tmp
 /.dev
+
+# build files
+/static/styles
+/static/js
