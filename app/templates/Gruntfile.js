@@ -31,18 +31,6 @@ module.exports = require('grunto')(function (grunt) {
 	}]);
 
 	return {
-		jshint: {
-			options: {
-				jshintrc: true
-			}
-		},
-		autoprefixer: {
-			options: {
-				browsers: ['last 3 version', 'ie 9', 'android 4'],
-				diff: false,
-				map: false
-			}
-		},
 		watch: {
 			options: {
 				livereload: true,
