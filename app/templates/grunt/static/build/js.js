@@ -3,9 +3,16 @@ module.exports = function (grunt, options) {
 
 	this
 
-		.jshint([
-			options.JS_SRC + '/**/*.js'
-		])
+		.jshint({
+			options: {
+				jshintrc: true
+			},
+			files: [
+				{
+					src: options.JS_SRC + '/**/*.js'
+				}
+			]
+		})
 
 		.clean([
 			options.JS_DEST
