@@ -25,6 +25,11 @@ module.exports = function (grunt, options) {
 		})
 
 		.autoprefixer({
+			options: {
+				browsers: ['last 3 version', 'ie 9', 'android 4'],
+				diff: false,
+				map: false
+			},
 			expand: true,
 			overwrite: true,
 			src: [
