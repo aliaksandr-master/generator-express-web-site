@@ -29,7 +29,8 @@
     "yosay": "^1.0.3"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "mockery": "^1.4.0"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
